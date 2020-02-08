@@ -26,7 +26,7 @@ class TasksContainer extends Component {
     createTask = (e) => {
         if (e.key === 'Enter') {
             axios.post('/api/v1/tasks', {todo: {title: e.target.value}})
-            .then(responsse => {
+            .then(response => {
                 const tasks = update(this.state.tasks, {
                     $splice: [[0, 0, response.data]]
                 })
@@ -37,6 +37,20 @@ class TasksContainer extends Component {
             })
             .catch(error => console.log(error))
         }
+    }
+
+    completeTask = (e, id) => {
+        axios.put(`/api/v1/tasks/${id}`, {task: {done: e.target.checked}})
+        .then(response => {
+            const taskIndex = this.state.tasks.findIndex(x => x.id === response.data.id)
+            const tasks = update(this.state.tasks, {
+                [taskIndex]: {$set: response.data}
+            })
+            this.setState({
+                tasks: tasks
+            })
+        })
+        .catch(error => console.log(error))
     }
 
     render() {
@@ -53,7 +67,9 @@ class TasksContainer extends Component {
                         {this.state.tasks.map((task) => {
                             return(
                                 <li className="task" task={task} key={task.id}>
-                                    <input className="taskCheckbox" type="checkbox" />
+                                    <input className="taskCheckbox" type="checkbox" 
+                                        checked={task.done}
+                                        onChange={(e) => this.completeTask(e, task.id)}/>
                                     <label className="taskLabel">{task.title}</label>
                                     <span className="deleteTaskBtn">Delete</span>
                                 </li>
