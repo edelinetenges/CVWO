@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import update from 'immutability-helper'
 
 class TasksContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tasks: []
+            tasks: [],
+            inputValue: ''
         }
     }
 
@@ -21,13 +23,30 @@ class TasksContainer extends Component {
         this.getTasks()
     }
 
+    createTask = (e) => {
+        if (e.key === 'Enter') {
+            axios.post('/api/v1/tasks', {todo: {title: e.target.value}})
+            .then(responsse => {
+                const tasks = update(this.state.tasks, {
+                    $splice: [[0, 0, response.data]]
+                })
+                this.setState({
+                    tasks: tasks,
+                    inputValue: ''
+                })
+            })
+            .catch(error => console.log(error))
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="inputContainer">
                     <input className="taskInput" type="text"
                     placeholder="Add task" maxLength="50" 
-                    onKeyPress={this.createTask} />
+                    onKeyPress={this.createTask}
+                    value={this.state.inputValue} onChange={this.handleChange} />
                 </div>
                 <div className="listWrapper">
                     <ul className="taskList">
