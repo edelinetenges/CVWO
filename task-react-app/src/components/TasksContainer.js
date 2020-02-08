@@ -53,6 +53,20 @@ class TasksContainer extends Component {
         .catch(error => console.log(error))
     }
 
+    deleteTask = (id) => {
+        axios.delete(`/api/v1/tasks/${id}`)
+        .then(response => {
+            const taskIndex = this.state.tasks.findIndex(x => x.id === id)
+            const tasks = update(this.state.tasks, {
+                $splice: [[taskIndex, 1]]
+            })
+            this.setState({
+                tasks: tasks
+            })
+        })
+        .catch(error => console.log(error))
+    }
+
     render() {
         return (
             <div>
@@ -71,7 +85,10 @@ class TasksContainer extends Component {
                                         checked={task.done}
                                         onChange={(e) => this.completeTask(e, task.id)}/>
                                     <label className="taskLabel">{task.title}</label>
-                                    <span className="deleteTaskBtn">Delete</span>
+                                    <span className="deleteTaskBtn"
+                                        onClick={(e) => this.deleteTask(task.id)}>
+                                        Delete
+                                    </span>
                                 </li>
                             )
                         })}
