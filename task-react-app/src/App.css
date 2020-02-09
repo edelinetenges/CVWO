@@ -1,3 +1,7 @@
+body {
+  background-color: #afd3d6;
+}
+
 ul.taskList {
 	padding: 0 25px;
 }
@@ -5,9 +9,9 @@ ul.taskList {
 li.task {
 	list-style-type: none;
 	font-family: Tahoma;
-	font-size: 1.2em;
-	padding: 10px 0;
-	border-bottom: 1px solid #ccc;
+  font-size: 1.2em;
+	padding: 13px 0;
+	border-bottom: 1px solid #5999a1;
 }
 
 li.task:hover .deleteTaskBtn {
@@ -22,7 +26,7 @@ input.taskCheckbox {
 	-webkit-appearance: none;
 	width: 20px;
 	height: 20px;
-	border: 1px solid #ccc;
+	border: 3px solid #5999a1;
 	border-radius: 5px;
 	outline: none;
 	margin-left: 5px;
@@ -32,7 +36,7 @@ input.taskCheckbox {
 }
 
 input.taskCheckbox:checked:after {
-	color: green;
+	color: #589958;
 	content: "\2713";
 	display: block;
 	font-size: 17px;
@@ -44,42 +48,46 @@ input.taskCheckbox:checked:after {
 }
 
 input.taskCheckbox + label.taskLabel {
-	color: black;
+	color: #41838b;
 }
 
 input.taskCheckbox:checked + label.taskLabel {
 	text-decoration: line-through;
-	color: #656565;
+	color: #71969b;
 }
 
 input[placeholder] {
-	font-size: 1.1em;
+  font-size: 1.1em;
+  color: white;
 }
 
 .container {
-	width: 40%;
-	height: 400px;
+	width: 50%;
+	height: 500px;
 	position: relative;
 	margin: 0 auto;
-	border-radius: 5px;
+  border-radius: 5px;
+  /* background-color: #c3dbdf; */
 }
 
 .header {
-	color: black;
+	color: #5999a1;
 	padding: 5px;
 	text-align: center;
-	font-family: Tahoma, sans-serif;
+	font-family: Tahoma;
 }
 
 .inputContainer {
-	padding: 15px;
+  padding: 15px;
 }
 
 .inputContainer .taskInput {
 	padding: 10px;
-	width: 100%;
+  width: 100%;
 	border-radius: 25px;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  border-color: #5999a1;
+  background-color: #7fbac2;
 }
 
 .listWrapper {
@@ -93,13 +101,13 @@ input[placeholder] {
 
 .deleteTaskBtn {
 	float: right;
-	color: red;
-	background: rgba(0,0,0,0);
-	font-size: 20px;
-	font-weight: bold;
-	border: 1px solid white;
+	color: #bcdfe4;
+	background: #5999a1;
+	font-size: 15px;
+	/* font-weight: bold; */
+	/* border: 2px solid white; */
 	border-radius: 50%;
-	padding: 10px 5px;
+	padding: 15px 10px;
 	visibility: hidden;
 	opacity: 0;
 	line-height: 0;
