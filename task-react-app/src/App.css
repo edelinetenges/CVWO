@@ -9,12 +9,17 @@ ul.taskList {
 li.task {
 	list-style-type: none;
 	font-family: Tahoma;
-  font-size: 1.2em;
+    font-size: 1.2em;
 	padding: 13px 0;
 	border-bottom: 1px solid #5999a1;
 }
 
 li.task:hover .deleteTaskBtn {
+	visibility: visible;
+	opacity: 1;
+}
+
+li.task:hover .editTask {
 	visibility: visible;
 	opacity: 1;
 }
@@ -27,6 +32,7 @@ input.taskCheckbox {
 	width: 20px;
 	height: 20px;
 	border: 3px solid #5999a1;
+	background-color: white;
 	border-radius: 5px;
 	outline: none;
 	margin-left: 5px;
@@ -61,56 +67,111 @@ input[placeholder] {
   color: white;
 }
 
-.container {
-	width: 50%;
-	height: 500px;
+.tagSearch {
+	padding: 10px;
+	width: 20%;
+	height: 70px;
+	top: 0;
+	position: relative;
+	float: left;
+	margin: 0 auto;
+	margin-left: 20px;
+	font-family: Tahoma;
+	color: #5999a1;
+	/* background-color: #c3dbdf; */
+}
+
+.tagName {
+	/* float: left; */
+	width: 100%;
+	color: #bcdfe4;
+	background: #7fbac2;
+	border-color: #5999a1;
 	position: relative;
 	margin: 0 auto;
-  border-radius: 5px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.container {
+	width: 50%;
+	height: 450px;
+	/* float: right; */
+	position: relative;
+	margin: 0 auto;
+  	border-radius: 5px;
   /* background-color: #c3dbdf; */
 }
 
 .header {
-	color: #5999a1;
-	padding: 5px;
+	color: white;
+	background-color: #5999a1;
+	width: 100%;
+	height: 80px;
+	padding: 3px;
 	text-align: center;
 	font-family: Tahoma;
 }
 
+/* took out */
+/* .description {
+	color: #c3dbdf;
+	padding: 0px;
+	position: relative;
+	top: 50px;
+	right: 0;
+	left: 0;
+	text-align: center;
+	font-family: Tahoma;
+} */
+
 .inputContainer {
-  padding: 15px;
+  padding: 30px;
 }
 
 .inputContainer .taskInput {
 	padding: 10px;
-  width: 100%;
-	border-radius: 25px;
-  box-sizing: border-box;
-  border-color: #5999a1;
-  background-color: #7fbac2;
+  	width: 100%;
+	border-radius: 5px;
+	box-sizing: border-box;
+	border-color: #5999a1;
+	background-color: #7fbac2;
 }
 
 .listWrapper {
-	position: absolute;
-	bottom: 50px;
-	top: 160px;
+	position: relative;
+	bottom: 200px;
+	top: 0px;
 	right: 0;
 	left: 0;
 	overflow: auto;
 }
 
-.deleteTaskBtn {
+.editTask {
 	float: right;
 	color: #bcdfe4;
+	background: #7fbac2;
+	border-color: #5999a1;
+	width: 20%;
+	height: 25px;
+	font-size: 15px;
+	/* position: relative; */
+	margin: 0 auto;
+  	border-radius: 5px;
+}
+
+.deleteTaskBtn {
+	float: right;
+	color: white;
 	background: #5999a1;
 	font-size: 15px;
 	/* font-weight: bold; */
 	/* border: 2px solid white; */
-	border-radius: 50%;
+	border-radius: 5%;
 	padding: 15px 10px;
 	visibility: hidden;
 	opacity: 0;
 	line-height: 0;
-	margin-right: 5px;
+	margin-right: 15px;
 	cursor: default;
 }

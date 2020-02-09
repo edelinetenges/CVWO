@@ -81,18 +81,18 @@ class TasksContainer extends Component {
 
     editTask = (e, id) => {
         if (e.key === 'Enter') {
-        axios.post(`/api/v1/tasks/${id}`, {task: {title: e.target.value}})
-        .then(response => {
-            const taskIndex = this.state.tasks.findIndex(x => x.id === id)
-            const tasks = update(this.state.tasks, {
-                [taskIndex]: {$set: response.data}
+            axios.put(`/api/v1/tasks/${id}`, {task: {title: e.target.value}})
+            .then(response => {
+                const taskIndex = this.state.tasks.findIndex(x => x.id === id)
+                const tasks = update(this.state.tasks, {
+                    [taskIndex]: {$set: response.data}
+                })
+                this.setState({
+                    tasks: tasks,
+                    inputValue: ''
+                })
             })
-            this.setState({
-                tasks: tasks,
-                inputValue: ''
-            })
-        })
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
         }    
     }
 
